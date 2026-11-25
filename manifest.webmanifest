@@ -1,0 +1,12 @@
+{
+  "name": "Ashen Realms — Пепельные земли",
+  "short_name": "Ashen Realms",
+  "description": "Мрачная пиксельная RPG",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0c0b10",
+  "theme_color": "#111018",
+  "orientation": "portrait",
+  "icons": [{"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+}

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111018">
+<meta name="description" content="Ashen Realms — мрачная пиксельная RPG">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+<title>Ashen Realms</title>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div><div class="eyebrow">ХРОНИКИ ПЕПЛА</div><h1>ASHEN <span>REALMS</span></h1></div>
+    <button id="soundBtn" class="icon-btn" aria-label="Звук">♫</button>
+  </header>
+  <main>
+    <section class="hero panel">
+      <div class="scene" id="scene">
+        <div class="moon"></div><div class="mountain m1"></div><div class="mountain m2"></div>
+        <div class="ruin"><i></i><b></b><em></em></div>
+        <div class="mist mist1"></div><div class="mist mist2"></div>
+        <div class="scene-caption"><span id="regionTag">СЕВЕРНЫЕ ПУСТОШИ</span><strong id="locationName">Пепельная окраина</strong></div>
+      </div>
+      <div class="hero-foot"><span id="dayLabel">ДЕНЬ 1 · СУМЕРКИ</span><span id="weatherLabel">Пепельный ветер</span></div>
+    </section>
+
+    <section class="stats panel">
+      <div class="player-line"><div class="portrait">☠</div><div class="player-info"><strong id="playerName">Странник</strong><small id="levelLabel">Уровень 1 · Скиталец</small></div><div class="gold">◆ <span id="gold">12</span></div></div>
+      <div class="bars">
+        <div class="bar-row"><span>ЗДОРОВЬЕ</span><b id="hpText">30 / 30</b></div><div class="bar hp"><i id="hpBar"></i></div>
+        <div class="bar-row"><span>ЭНЕРГИЯ</span><b id="xpText">0 / 20 XP</b></div><div class="bar xp"><i id="xpBar"></i></div>
+      </div>
+      <div class="mini-stats"><span>⚔ Атака <b id="atk">5</b></span><span>🛡 Защита <b id="def">2</b></span><span>✦ Уровень <b id="lvl">1</b></span></div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-tab="world">МИР</button><button class="tab" data-tab="character">ГЕРОЙ</button><button class="tab" data-tab="bag">СУМКА <sup id="bagCount">2</sup></button><button class="tab" data-tab="journal">ЖУРНАЛ</button>
+    </nav>
+
+    <section id="world" class="tab-page active">
+      <div class="section-head"><div><div class="eyebrow">ПУТЬ НЕ ЗАКОНЧЕН</div><h2>Окрестности</h2></div><span class="muted">Глава I</span></div>
+      <div class="location-grid" id="locations">
+        <button class="location-card selected" data-place="outskirts"><span class="loc-icon">♜</span><b>Пепельная окраина</b><small>Тихие руины · безопасно</small></button>
+        <button class="location-card" data-place="forest"><span class="loc-icon">♣</span><b>Чёрный перелесок</b><small>Лес · опасность низкая</small></button>
+        <button class="location-card locked" data-place="crypt"><span class="loc-icon">▧</span><b>Затопленная крипта</b><small>Откроется после находки</small></button>
+        <button class="location-card locked" data-place="keep"><span class="loc-icon">♖</span><b>Башня без окон</b><small>Путь пока закрыт</small></button>
+      </div>
+      <div class="panel action-panel"><div class="eyebrow">ЧТО БУДЕШЬ ДЕЛАТЬ?</div><h3 id="actionTitle">Порыться среди руин</h3><p id="actionDesc">В пепле иногда остаются вещи тех, кто не успел уйти.</p><div class="actions"><button class="primary" id="exploreBtn">Исследовать</button><button class="secondary" id="restBtn">Передохнуть</button></div></div>
+      <div class="panel encounter hidden" id="combatPanel">
+        <div class="eyebrow">ОПАСНОСТЬ · ПОШАГОВЫЙ БОЙ</div><div class="enemy-row"><div class="enemy-art">☠</div><div><h3 id="enemyName">Пепельный падальщик</h3><small id="enemyHp">Здоровье: 12 / 12</small></div></div>
+        <div class="bar enemybar"><i id="enemyBar"></i></div>
+        <p id="combatLog">Существо преграждает путь.</p>
+        <div class="actions"><button class="primary" id="attackBtn">⚔ Атаковать</button><button class="secondary" id="guardBtn">🛡 Защита</button><button class="secondary" id="potionBtn">✚ Зелье</button></div>
+      </div>
+    </section>
+
+    <section id="character" class="tab-page">
+      <div class="section-head"><div><div class="eyebrow">ТОТ, КТО ИДЁТ СКВОЗЬ ПЕПЕЛ</div><h2>Персонаж</h2></div></div>
+      <div class="panel detail-panel"><div class="big-portrait">♟</div><h3>Странник</h3><p class="muted">Никто не помнит твоего имени. Даже ты сам.</p><div class="detail-grid"><span>Сила <b id="strStat">5</b></span><span>Стойкость <b id="vitStat">2</b></span><span>Удача <b id="luckStat">1</b></span><span>Опыт <b id="xpStat">0</b></span></div></div>
+      <div class="panel"><h3>Экипировка</h3><div class="equip"><span>Оружие</span><b>Ржавый короткий меч</b></div><div class="equip"><span>Броня</span><b>Потёртый плащ</b></div></div>
+    </section>
+
+    <section id="bag" class="tab-page">
+      <div class="section-head"><div><div class="eyebrow">ВСЁ, ЧТО УДАЛОСЬ СОХРАНИТЬ</div><h2>Сумка</h2></div></div>
+      <div id="inventory" class="inventory"></div>
+    </section>
+
+    <section id="journal" class="tab-page">
+      <div class="section-head"><div><div class="eyebrow">ЗАПИСИ СТРАННИКА</div><h2>Журнал</h2></div></div>
+      <div class="panel"><h3>Главная нить</h3><p>Найти дорогу к затопленной крипте. Говорят, под старым храмом всё ещё горит синий огонь.</p><div class="quest-progress"><i></i><span id="questText">0 / 1 — найдено древних реликвий</span></div></div>
+      <div class="panel"><h3>Последние события</h3><ul id="logList" class="log-list"><li>Ты пришёл в себя среди пепла.</li></ul></div>
+    </section>
+  </main>
+  <footer>ASHEN REALMS <span>·</span> СОХРАНЕНИЕ НА ЭТОМ УСТРОЙСТВЕ</footer>
+</div>
+<div id="toast" class="toast" role="status"></div>
+<script src="game.js"></script>
+</body>
+</html>
